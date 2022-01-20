@@ -1,0 +1,49 @@
+body {
+    font-size: 18px;
+}
+
+#board {
+    display: grid;
+    grid-gap: 3%;
+    grid-template-rows: repeat(4, 1fr);
+    grid-template-columns: repeat(4, 1fr);
+    padding: 1em 1em 1em 1em;
+    height: 640px;
+    width: 860px;
+    background-color: lavender;
+    border: solid 3px black;
+    border-radius: 15px;
+    box-shadow: -2px 1px 5px black;
+}
+
+.boxes {
+    display: flex;
+    height: 100%;
+    width: 100%;
+    border: solid 3px black;
+    border-radius: 10px;
+    box-shadow: -2px 1px 5px grey;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+}
+
+.outstanding {
+    transition: 200ms;
+    background-color: grey;
+}
+
+.outstanding:hover {
+    transition: 400ms;
+    background-color: aliceblue;
+}
+
+.acquired {
+    transition: 200ms;
+    background-color: green;
+}
+
+.acquired:hover {
+    transition: 400ms;
+    background-color: chartreuse;
+}

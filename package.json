@@ -1,0 +1,20 @@
+{
+  "name": "interview-skills-grid",
+  "version": "1.0.0",
+  "description": "Use this app to track and prioritize the topics you need to study during your job search.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/relandboyle/interview-skills-grid.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/relandboyle/interview-skills-grid/issues"
+  },
+  "homepage": "https://github.com/relandboyle/interview-skills-grid#readme"
+}
