@@ -1,26 +1,3 @@
-/**
-TODO:
-
-connect to MongoDB
-boxes display green based on acquired property
-entry form to select a box and enter innerText / acquired status
-
-userID: {
-    name: string,
-    boxes: [
-        {
-            id: number
-            grid-position: [number, number]
-            innerText: string
-            acquired: boolean
-        }
-    ]
-}
-
- */
-
-
-
 window.onload = function() {
 
     const board = document.getElementById('board');
@@ -35,13 +12,16 @@ window.onload = function() {
     console.log(boxes);
 
     function transition() {
-        const thisStyle = window.getComputedStyle(this, null);
-        console.log(thisStyle.getPropertyValue('background-color'));
-        thisStyle.setPropertyValue('background-color', 'red');
+        this.classList.toggle('outstanding');
+        this.classList.toggle('acquired');
     }
 
-    boxes.forEach((box) => {
+    boxes.forEach((box, i) => {
         box.onclick = transition;
+        if (i % 7 === 0) {
+            box.classList.toggle('outstanding');
+            box.classList.toggle('acquired');
+        }
     })
-
+    
 }

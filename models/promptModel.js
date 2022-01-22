@@ -1,0 +1,5 @@
+const UserModel = {
+
+}
+
+export { UserModel };
