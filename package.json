@@ -4,6 +4,7 @@
   "description": "Use this app to track and prioritize the topics you need to study during your job search.",
   "main": "index.js",
   "scripts": {
+    "dev": "nodemon server/server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -16,5 +17,21 @@
   "bugs": {
     "url": "https://github.com/relandboyle/interview-skills-grid/issues"
   },
-  "homepage": "https://github.com/relandboyle/interview-skills-grid#readme"
+  "homepage": "https://github.com/relandboyle/interview-skills-grid#readme",
+  "dependencies": {
+    "cookie-parser": "^1.4.6",
+    "eslint-plugin-react": "^7.28.0",
+    "express": "^4.17.2",
+    "mongoose": "^6.1.7",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "react-router": "^6.2.1",
+    "semantic-ui-css": "^2.4.1",
+    "semantic-ui-react": "^2.0.4"
+  },
+  "devDependencies": {
+    "env": "^0.0.2",
+    "nodemon": "^2.0.15",
+    "webpack": "^5.67.0"
+  }
 }
