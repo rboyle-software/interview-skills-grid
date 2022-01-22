@@ -14,6 +14,10 @@ app.use(express.urlencoded({extended: true}));
 app.use(express.json());
 // app.use(cookieParser());
 
+app.get('/', (req, res, next) => {
+    next();
+})
+
 
 
 app.listen(PORT, () => console.log(`Listening on Port ${PORT}`));
