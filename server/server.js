@@ -23,6 +23,7 @@ mongoose.connection.once('open', () => {
 
 app.use(express.static(path.join(__dirname, '../src')));
 app.use(express.static(path.join(__dirname, '../images')));
+app.use(express.static(path.join(__dirname, '../styles')));
 app.use(express.urlencoded({extended: true}));
 app.use(express.json());
 app.use(cookieParser());
@@ -30,7 +31,6 @@ app.use(cookieParser());
 app.get('/', (req, res, next) => {
     next();
 });
-
 
 
 app.listen(PORT, () => console.log(`Listening on Port ${PORT}`));

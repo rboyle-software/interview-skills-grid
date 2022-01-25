@@ -3,11 +3,19 @@ const Schema = mongoose.Schema;
 
 
 const UserSchema = new Schema({
-    userName: {
+    googleID: {
+        type: String,
+        required: true
+    },
+    userID: {
         type: String,
         required: true
     },
     userEmail: {
+        type: String,
+        required: true
+    },
+    userName: {
         type: String,
         required: true
     },
@@ -45,6 +53,17 @@ const UserSchema = new Schema({
 
 
 // const UserPostsSchema = new Schema({
+//     promptID: {
+//         type: String,
+//         required: true
+//     },
+//     posted_at: Date,
+//     default: Date.now(),
+//     required: true
+// });
+
+
+// const UserSkillsSchema = new Schema({
 //     promptID: {
 //         type: String,
 //         required: true
