@@ -1,0 +1,103 @@
+@light-blue: rgb(30, 127, 206);
+@dark-blue: rgb(47, 76, 114);
+@light-gray: rgb(220, 220, 220);
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+#application {
+    height: 100vh;
+    width: 100vw;
+    background-color: @dark-blue;
+}
+
+#top-menu {
+    width: 100vw;
+    margin-bottom: 5%;
+    color: @light-gray;
+    background-color: @light-blue;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.863);
+    font-size: 1.25em;
+    font-weight: bold;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    > ul {
+        list-style: none;
+        display: flex;
+        padding-left: 50px;
+        padding-right: 50px;
+        > li {
+            transition: 400ms;
+            padding: 20px 40px 20px;
+        }
+        li:nth-child(-n+2), li:nth-last-child(2) {
+            border-right: solid 2px @light-gray;
+        }
+        li:nth-child(4) {
+            margin-left: auto;
+        }
+        li:hover {
+            transition: 400ms;
+            color: @light-blue;
+            text-shadow: 1px 1px 0px black;
+            background-color: rgb(177, 55, 177);
+        }
+    }
+}
+
+#board {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    display: grid;
+    grid-gap: 2%;
+    grid-template-rows: repeat(4, 1fr);
+    grid-template-columns: repeat(4, 1fr);
+    padding: 1em 1em 1em 1em;
+    height: 70%;
+    width: 50%;
+    background-color: rgb(70, 70, 70);
+    border: solid 3px black;
+    border-radius: 15px;
+    box-shadow: -5px 5px 10px rgba(0, 0, 0, 0.781);
+}
+
+.boxes {
+    display: flex;
+    height: 95%;
+    width: 100%;
+    border: solid 3px black;
+    border-radius: 10px;
+    box-shadow: -2px 1px 5px black;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    font-weight: bold;
+    font-family: 'JetBrains Mono', monospace;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.outstanding {
+    transition: 200ms;
+    background-color: rgb(172, 172, 172);
+    &:hover {
+        transition: 400ms;
+        background-color: aliceblue;
+        box-shadow: 0px 0px 20px rgba(136, 174, 209, 0.589);
+        cursor: pointer;
+    }
+}
+
+.acquired {
+    transition: 200ms;
+    background-color: rgb(71, 155, 71);
+    &:hover {
+        transition: 400ms;
+        background-color: chartreuse;
+        cursor: pointer;
+    }
+}
