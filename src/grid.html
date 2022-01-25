@@ -28,13 +28,20 @@
     <script src="//cdnjs.cloudflare.com/ajax/libs/less.js/2.5.1/less.min.js" type="text/javascript"></script>
     <script>less.watch();</script>
     
-
+    <script src="index.js" type="text/javascript"></script>
 </head>
 <body>
-    <div id="board">
-        <p class="boxes acquired">Oh, hello.</p>
-        <a href="/auth/google" class="boxes acquired">Authenticate with Google</a>
-        <a href="/auth/github" class="boxes acquired">Authenticate with GitHub</a>
+    <div id="application">
+        <nav id="top-menu">
+            <ul>
+                <li>Home</li>
+                <li>Prompts</li>
+                <li>App Tracker</li>
+                <li>Settings</li>
+                <li>My Account</li>
+            </ul>
+        </nav>
+        <div id="board"></div>
     </div>
 </body>
 </html>

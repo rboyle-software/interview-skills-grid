@@ -42,5 +42,4 @@ window.onload = function() {
 
         board.append(box);
     });
-
 }
