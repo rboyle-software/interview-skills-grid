@@ -1,35 +1,24 @@
 const mongoose = require('mongoose');
+const findOrCreate = require('mongoose-findorcreate');
 const Schema = mongoose.Schema;
 
 
 const UserSchema = new Schema({
-    googleID: {
+    googleId: {
         type: String,
         required: true
     },
-    userID: {
+    email: {
         type: String,
         required: true
     },
-    userEmail: {
-        type: String,
-        required: true
-    },
-    userName: {
+    displayName: {
         type: String,
         required: true
     },
     boardContent: {
         type: Array,
-        required: true
-    },
-    userFavorites: {
-        type: Array,
-        required: true
-    },
-    userPosts: {
-        type: Array,
-        required: true
+        required: true,
     },
     created_at: {
         type: Date,
@@ -39,41 +28,8 @@ const UserSchema = new Schema({
 });
 
 
-// const FavoritesSchema = new Schema({
-//     promptID: {
-//         type: String,
-//         required: true
-//     },
-//     faved_at: {
-//         type: Date,
-//         default: Date.now(),
-//         required: true
-//     }
-// });
-
-
-// const UserPostsSchema = new Schema({
-//     promptID: {
-//         type: String,
-//         required: true
-//     },
-//     posted_at: Date,
-//     default: Date.now(),
-//     required: true
-// });
-
-
-// const UserSkillsSchema = new Schema({
-//     promptID: {
-//         type: String,
-//         required: true
-//     },
-//     posted_at: Date,
-//     default: Date.now(),
-//     required: true
-// });
-
+UserSchema.plugin(findOrCreate);
 
 const User = new mongoose.model('Users', UserSchema);
 
-module.exports = { UserSchema };
+module.exports = { User };

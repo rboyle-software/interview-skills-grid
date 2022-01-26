@@ -7,10 +7,21 @@
     padding: 0;
 }
 
+a {
+    text-decoration: none;
+    color: @light-gray;
+}
+
 #application {
     height: 100vh;
     width: 100vw;
     background-color: @dark-blue;
+}
+
+#login {
+    height: 100vh;
+    width: 100vw;
+    background-color:rgb(85, 59, 81);
 }
 
 #top-menu {
@@ -39,9 +50,9 @@
         }
         li:hover {
             transition: 400ms;
-            color: @light-blue;
             text-shadow: 1px 1px 0px black;
             background-color: rgb(177, 55, 177);
+            cursor: pointer;
         }
     }
 }
@@ -79,6 +90,10 @@
     -moz-user-select: none;
     -ms-user-select: none;
     user-select: none;
+
+    > a {
+        color: black;
+    }
 }
 
 .outstanding {
@@ -98,6 +113,7 @@
     &:hover {
         transition: 400ms;
         background-color: chartreuse;
+        box-shadow: 0px 0px 20px rgba(172, 255, 47, 0.623);
         cursor: pointer;
     }
 }
