@@ -10,8 +10,8 @@ const currentUser = require('../routes/passport');
 require('dotenv').config();
 const app = express();
 
-
 const userController = require('../controllers/userController');
+
 
 const PORT = process.env.PORT || 3000;
 
@@ -61,7 +61,7 @@ app.use(passport.session());
 
 
 app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname, '../index.html'));
+    res.sendFile(path.join(__dirname, '../src/index.html'));
 });
 
 app.get('/auth-failed', (req, res) => {
@@ -69,8 +69,14 @@ app.get('/auth-failed', (req, res) => {
     res.redirect('/test');
 });
 
-app.get('/skills-grid', isLoggedIn, (req, res) => {
+
+app.get('/skills-grid', [isLoggedIn, userController.getCurrent], (req, res) => {
     res.sendFile(path.join(__dirname, '../src/grid.html'));
+});
+
+
+app.patch('/skills-grid', userController.modCurrent, (req, res) => {
+    res.sendStatus(200).json();
 });
 
 
@@ -78,15 +84,14 @@ app.get('/auth/google',
   passport.authenticate('google', { scope: ['email', 'profile'] }
 ));
 
-app.get('/auth/google/callback', 
-  passport.authenticate('google', { failureRedirect: '/auth-failed' }), (req, res) => { res.redirect('/skills-grid');
+app.get('/auth/google/callback', passport.authenticate('google', { failureRedirect: '/auth-failed' }), (req, res) => { res.redirect('/skills-grid');
 });
 
 app.get('/logout', (req, res) => {
     req.session = null;
     req.logout();
     res.redirect('/');
-})
+});
 
 
 app.listen(PORT, () => console.log(`Listening on Port ${PORT}`));

@@ -32,4 +32,4 @@ UserSchema.plugin(findOrCreate);
 
 const User = new mongoose.model('Users', UserSchema);
 
-module.exports = { User };
+module.exports = { User };  

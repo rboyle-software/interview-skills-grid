@@ -5,6 +5,26 @@ const { User } = require('../models/UserModel')
 require('dotenv').config();
 
 
+const initialSkills = [
+    {status: 'outstanding', value: ''},
+    {status: 'outstanding', value: ''},
+    {status: 'outstanding', value: ''},
+    {status: 'outstanding', value: ''},
+    {status: 'outstanding', value: ''},
+    {status: 'outstanding', value: ''},
+    {status: 'outstanding', value: ''},
+    {status: 'outstanding', value: ''},
+    {status: 'outstanding', value: ''},
+    {status: 'outstanding', value: ''},
+    {status: 'outstanding', value: ''},
+    {status: 'outstanding', value: ''},
+    {status: 'outstanding', value: ''},
+    {status: 'outstanding', value: ''},
+    {status: 'outstanding', value: ''},
+    {status: 'outstanding', value: ''},
+];
+
+
 passport.serializeUser(function(user, done) {
     done(null, user.id);
 });
@@ -30,11 +50,12 @@ passport.use(new GoogleStrategy({
             displayName: profile.name.givenName
         },
         function (err, user) {
-            // console.log(user);
             return cb(err, user);
         });
     }
 ));
+
+// User.findOneAndUpdate( { googleId: profile.id }, { $set: { "boardContent": [ { "value": "TEST" } ] } } );
 
 
 // passport.use(new GitHubStrategy({
