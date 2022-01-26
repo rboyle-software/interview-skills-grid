@@ -1,16 +1,19 @@
 const express = require('express');
-const path = require('path');
-const mongoose = require('mongoose');
-const passport = require('passport');
-const session = require('express-session');
+const cookieSession = require('cookie-session');
 const cookieParser = require('cookie-parser');
+const session = require('express-session');
+const passport = require('passport');
+const mongoose = require('mongoose');
+const path = require('path');
+const cors = require('cors');
+const currentUser = require('../routes/passport');
 require('dotenv').config();
-
 const app = express();
-require('../src/auth');
+
+
+const userController = require('../controllers/userController');
 
 const PORT = process.env.PORT || 3000;
-
 
 mongoose.connect(process.env.MONGO_URI, {
     useNewUrlParser: true,
@@ -22,68 +25,69 @@ mongoose.connection.once('open', () => {
 });
 
 
-function isLoggedIn(req, res, next) {
-    req.user ? next() : res.sendStatus(401);
-}
-
-
 app.use(express.static(path.join(__dirname, '../src')));
 app.use(express.static(path.join(__dirname, '../images')));
 app.use(express.static(path.join(__dirname, '../styles')));
 app.use(express.urlencoded({extended: true}));
 app.use(express.json());
 app.use(cookieParser());
+app.use(cors());
+
+app.use(cookieSession({
+    name: 'skills-grid',
+    keys: ['key1', 'key2']
+}));
 
 
-app.use(session({ secret: 'CAT', resave: false, saveUninitialized: true }));
+app.use(session({
+    secret: process.env.KEYBOARD_CAT,
+    resave: false,
+    saveUninitialized: true
+}));
+
+
+const isLoggedIn = (req, res, next) => {
+    if (req.user) {
+        next();
+    } else {
+        res.sendStatus(401);
+        console.log('You are not logged in!');
+    }
+}
+
+
 app.use(passport.initialize());
 app.use(passport.session());
 
 
 app.get('/', (req, res) => {
-    res.send('<a href="/auth/google">Authenticate with Google</a>');
+    res.sendFile(path.join(__dirname, '../index.html'));
 });
 
+app.get('/auth-failed', (req, res) => {
+    res.send('Authorization Failed!');
+    res.redirect('/test');
+});
 
-app.get('/auth/google', passport.authenticate('google', { scope: ['profile'] }));
-
-
-app.get('/google/callback',
-    passport.authenticate('google', {
-        successRedirect: '/protected',
-        failureRedirect: '/auth/google/failure'
-    })
-);
-
-
-app.get('/grid', (req, res) => {
+app.get('/skills-grid', isLoggedIn, (req, res) => {
     res.sendFile(path.join(__dirname, '../src/grid.html'));
 });
 
 
-app.get('/protected', isLoggedIn, (req, res) => {
-    // res.redirect('/auth/grid');
-    res.sendFile(path.join(__dirname, '../src/grid.html'));
-    // res.send(`Hello ${req.user.displayName}!`);
-});
+app.get('/auth/google',
+  passport.authenticate('google', { scope: ['email', 'profile'] }
+));
 
+app.get('/auth/google/callback', 
+  passport.authenticate('google', { failureRedirect: '/auth-failed' }), (req, res) => { res.redirect('/skills-grid');
+});
 
 app.get('/logout', (req, res) => {
+    req.session = null;
     req.logout();
-    req.session.destroy();
-    res.sendFile(path.resolve(__dirname, '../src/index.html'));
-});
-
-
-app.get('/auth/google/failure', (req, res) =>  {
-    res.send('Failed to authenticate!')
-});
-
-
-// app.use(function (err, req, res, next) {
-//   console.error(err.stack)
-//   res.status(500).send('Something broke!')
-// });
+    res.redirect('/');
+})
 
 
 app.listen(PORT, () => console.log(`Listening on Port ${PORT}`));
+
