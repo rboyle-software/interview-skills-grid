@@ -5,6 +5,26 @@ const { User } = require('../models/UserModel')
 require('dotenv').config();
 
 
+const initialSkills = [
+    {status: 'outstanding', value: ''},
+    {status: 'outstanding', value: ''},
+    {status: 'outstanding', value: ''},
+    {status: 'outstanding', value: ''},
+    {status: 'outstanding', value: ''},
+    {status: 'outstanding', value: ''},
+    {status: 'outstanding', value: ''},
+    {status: 'outstanding', value: ''},
+    {status: 'outstanding', value: ''},
+    {status: 'outstanding', value: ''},
+    {status: 'outstanding', value: ''},
+    {status: 'outstanding', value: ''},
+    {status: 'outstanding', value: ''},
+    {status: 'outstanding', value: ''},
+    {status: 'outstanding', value: ''},
+    {status: 'outstanding', value: ''},
+];
+
+
 passport.serializeUser(function(user, done) {
     done(null, user.id);
 });
@@ -21,7 +41,7 @@ passport.deserializeUser(function(user, done) {
 passport.use(new GoogleStrategy({
     clientID: process.env.GOOGLE_CLIENT_ID,
     clientSecret: process.env.GOOGLE_CLIENT_SECRET,
-    callbackURL: "http://interview-skills-grid.herokuapp.com/auth/google/callback"
+    callbackURL: "http://localhost:3000/auth/google/callback"
     },
     function(accessToken, refreshToken, profile, cb) {
         User.findOrCreate({
@@ -30,11 +50,12 @@ passport.use(new GoogleStrategy({
             displayName: profile.name.givenName
         },
         function (err, user) {
-            // console.log(user);
             return cb(err, user);
         });
     }
 ));
+
+// User.findOneAndUpdate( { googleId: profile.id }, { $set: { "boardContent": [ { "value": "TEST" } ] } } );
 
 
 // passport.use(new GitHubStrategy({
