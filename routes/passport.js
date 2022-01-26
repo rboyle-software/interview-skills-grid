@@ -21,7 +21,7 @@ passport.deserializeUser(function(user, done) {
 passport.use(new GoogleStrategy({
     clientID: process.env.GOOGLE_CLIENT_ID,
     clientSecret: process.env.GOOGLE_CLIENT_SECRET,
-    callbackURL: "http://interview-skills-grid.herokuapp.com/auth/google/callback"
+    callbackURL: "https://interview-skills-grid.herokuapp.com/auth/google/callback"
     },
     function(accessToken, refreshToken, profile, cb) {
         User.findOrCreate({
