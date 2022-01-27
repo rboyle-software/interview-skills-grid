@@ -1,16 +1,20 @@
 const express = require('express');
+const userController = require('../controllers/userController');
+const currentUser = require('../routes/passport');
 const cookieSession = require('cookie-session');
 const cookieParser = require('cookie-parser');
 const session = require('express-session');
+const favicon = require('serve-favicon')
 const passport = require('passport');
 const mongoose = require('mongoose');
 const path = require('path');
 const cors = require('cors');
-const currentUser = require('../routes/passport');
 require('dotenv').config();
+
+
 const app = express();
 
-const userController = require('../controllers/userController');
+app.use(favicon(path.join(__dirname, '../images', 'favicon.png')));
 
 
 const PORT = process.env.PORT || 3000;
