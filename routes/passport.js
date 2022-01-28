@@ -34,20 +34,28 @@ passport.use(new GoogleStrategy({
     clientSecret: process.env.GOOGLE_CLIENT_SECRET,
     callbackURL: process.env.GOOGLE_CALLBACK_URL
     },
-    function (accessToken, refreshToken, profile, done) {
+    async (accessToken, refreshToken, profile, done) => {
         // console.log('GOOGLE PROFILE:', profile);
         // console.log('GOOGLE PROFILE ID:', profile.id);
-        User.findOrCreate({
+        const newUser = {
             userId: profile.id,
             email: profile.emails[0].value,
             displayName: profile.name.givenName,
             imageUrl: profile.photos[0].value,
             provider: profile.provider,
             boardContent: initialSkills
-        },
-        function (err, user) {
-            return done(err, user);
-        });
+        }
+        try {
+            let user = await User.findOne( { userId: profile.id } );
+            if (user) {
+                done(null, user);
+            } else {
+                user = await User.create(newUser);
+                done(null, user);
+            }
+        } catch (err) {
+            console.error(err);
+        }
     }
 ));
 
@@ -58,20 +66,28 @@ passport.use(new GitHubStrategy({
     callbackURL: process.env.GITHUB_CALLBACK_URL,
     scope: 'user:email'
     },
-    function(accessToken, refreshToken, profile, done) {
+    async (accessToken, refreshToken, profile, done) => {
         // console.log('GITHUB PROFILE:', profile);
         // console.log('GITHUB PROFILE ID:', profile.id);
-        User.findOrCreate({
+        const newUser = {
             userId: profile.id,
             email: profile.emails[0].value,
             displayName: profile.displayName.split(' ')[0],
             imageUrl: profile.photos[0].value,
             provider: profile.provider,
             boardContent: initialSkills
-        },
-        function (err, user) {
-            return done(err, user);
-        });
+        }
+        try {
+            let user = await User.findOne( { userId: profile.id } );
+            if (user) {
+                done(null, user);
+            } else {
+                user = await User.create(newUser);
+                done(null, user);
+            }
+        } catch (err) {
+            console.error(err);
+        }
     }
 ));
 
@@ -82,20 +98,28 @@ passport.use(new FacebookStrategy({
     callbackURL: process.env.FACEBOOK_CALLBACK_URL,
     profileFields: [ 'id', 'emails', 'name' ]
     },
-    function(accessToken, refreshToken, profile, done) {
+    async (accessToken, refreshToken, profile, done) => {
         // console.log('FACEBOOK PROFILE:', profile);
         // console.log('FACEBOOK PROFILE ID:', profile.id);
-        User.findOrCreate({
+        const newUser = {
             userId: profile.id,
             email: profile.emails[0].value,
             displayName: profile.name.givenName,
             imageUrl: '../images/Facebook-Blacklist-Zuckerberg.jpg',
             provider: profile.provider,
             boardContent: initialSkills
-        },
-        function (err, user) {
-            return done(err, user);
-        });
+        }
+        try {
+            let user = await User.findOne( { userId: profile.id } );
+            if (user) {
+                done(null, user);
+            } else {
+                user = await User.create(newUser);
+                done(null, user);
+            }
+        } catch (err) {
+            console.error(err);
+        }
     }
 ));
 

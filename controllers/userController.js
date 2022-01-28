@@ -4,9 +4,9 @@ const userController = {};
 
 
 userController.getCurrent = (req, res, next) => {
-    const currentUserId = req.user.googleId;
+    const currentUserId = req.user.id;
 
-    User.findOne({ googleId: currentUserId }, (err, currentUser) => {
+    User.findOne({ userId: currentUserId }, (err, currentUser) => {
     if (err) {
       return next(err); 
     }
