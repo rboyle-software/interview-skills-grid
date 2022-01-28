@@ -4,21 +4,21 @@ const Schema = mongoose.Schema;
 
 
 const UserSchema = new Schema({
-    googleId: {
+    userId: {
         type: String,
         required: true
     },
     email: {
         type: String,
-        required: true
+        // required: true
     },
     displayName: {
         type: String,
-        required: true
+        // required: true
     },
     boardContent: {
         type: Array,
-        required: true,
+        // required: true,
     },
     created_at: {
         type: Date,
