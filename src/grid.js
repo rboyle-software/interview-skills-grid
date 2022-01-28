@@ -75,4 +75,6 @@ window.onload = function() {
 
         board.append(box);
     });
+
+    board.classList.add('boardAnimation');
 }

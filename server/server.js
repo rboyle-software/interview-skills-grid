@@ -53,7 +53,6 @@ app.use(passport.session());
 
 
 const isLoggedIn = (req, res, next) => {
-    console.log('IS LOGGED IN REQ.USER:', req.user);
     if (req.user) {
         next();
     } else {
@@ -95,7 +94,6 @@ app.get('/auth/google/callback',
         failureRedirect: '/auth-failed'
     }),
     (req, res) => {
-        console.log('GOOGLE REQ.USER:', req.user);
         res.redirect('/skills-grid');
     });
 
@@ -111,7 +109,6 @@ app.get('/auth/github/callback',
         failureRedirect: '/auth-failed'
     }),
     (req, res) => {
-        console.log('GITHUB REQ.USER:', req.user);
         res.redirect('/skills-grid');
     });
 
@@ -119,7 +116,7 @@ app.get('/auth/github/callback',
 // authorize with Facebook
 app.get('/auth/facebook',
     passport.authenticate('facebook', {
-        scope: ['email', 'public_profile' ]
+        scope: [ 'email', 'public_profile' ]
     }));
 
 app.get('/auth/facebook/callback',
@@ -127,7 +124,6 @@ app.get('/auth/facebook/callback',
         failureRedirect: '/auth-failed'
     }),
     (req, res) => {
-        console.log('FACEBOOK REQ.USER:', req.user);
         res.redirect('/skills-grid');
     });
 

@@ -8,19 +8,27 @@ const UserSchema = new Schema({
         type: String,
         required: true
     },
-    email: {
-        type: String,
-        // required: true
-    },
     displayName: {
         type: String,
-        // required: true
+        required: true
+    },
+    email: {
+        type: String,
+        required: true
+    },
+    imageUrl: {
+        type: String,
+        required: true
+    },
+    provider: {
+        type: String,
+        required: true
     },
     boardContent: {
         type: Array,
-        // required: true,
+        required: true,
     },
-    created_at: {
+    createdAt: {
         type: Date,
         default: Date.now(),
         required: true
