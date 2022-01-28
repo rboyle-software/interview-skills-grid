@@ -7,12 +7,7 @@
     <style>
         @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@450&display=swap');
     </style>
-    
-    <link rel="icon" type="image/png" href="../images/icon/favicon-16x16.png" sizes="16x16">
-    <link rel="icon" type="image/png" href="../images/icon/favicon-32x32.png" sizes="32x32">
-    <link rel="icon" type="image/png" href="../images/icon/android-chrome-192x192.png" sizes="92x92">
-    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
-    
+
     <title>Interview Skills Board</title>
     
     <link rel="stylesheet/less" type="text/css" href="styles.less">
@@ -30,6 +25,29 @@
       </script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/less.js/2.5.1/less.min.js" type="text/javascript"></script>
     <script>less.watch();</script>
+
+    
+<script>
+    window.fbAsyncInit = function() {
+      FB.init({
+        appId      : '{your-app-id}',
+        cookie     : true,
+        xfbml      : true,
+        version    : '{api-version}'
+      });
+        
+      FB.AppEvents.logPageView();   
+        
+    };
+  
+    (function(d, s, id){
+       var js, fjs = d.getElementsByTagName(s)[0];
+       if (d.getElementById(id)) {return;}
+       js = d.createElement(s); js.id = id;
+       js.src = "https://connect.facebook.net/en_US/sdk.js";
+       fjs.parentNode.insertBefore(js, fjs);
+     }(document, 'script', 'facebook-jssdk'));
+  </script>
 
     <script src="index.js" type="text/javascript"></script>
 
@@ -55,11 +73,13 @@
                 <a href="/auth/google">Authorize with<br>Google</a>
             </div>
             <div class="boxes"></div>
-            <div class="boxes"></div>
+            <div class="boxes">
+                <a href="/auth/facebook">Authorize with<br>Facebook</a>
+            </div>
             <div class="boxes"></div>
             <div class="boxes"></div>
             <div class="boxes">
-                <a href="/auth/github">Authorize with<br>GitHub<br>(pending)</a>
+                <a href="/auth/github">Authorize with<br>GitHub</a>
             </div>
             <div class="boxes"></div>
             <div class="boxes"></div>

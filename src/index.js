@@ -12,7 +12,7 @@ window.onload = function() {
         box.onclick = colorToggle;
         box.classList.add('boxes');
 
-        if (i % 5 === 0) {
+        if (i % 5 === 0 || i === 7) {
             box.classList.add('acquired');
         } else {
             box.classList.add('outstanding');
