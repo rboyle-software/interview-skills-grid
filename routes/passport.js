@@ -2,7 +2,8 @@ const passport = require('passport');
 const GoogleStrategy = require('passport-google-oauth20').Strategy;
 const GitHubStrategy = require('passport-github2').Strategy;
 const FacebookStrategy = require('passport-facebook').Strategy;
-const { User } = require('../models/UserModel')
+const { User } = require('../models/UserModel');
+const path = require('path');
 require('dotenv').config();
 
 
@@ -33,14 +34,19 @@ passport.use(new GoogleStrategy({
     clientSecret: process.env.GOOGLE_CLIENT_SECRET,
     callbackURL: process.env.GOOGLE_CALLBACK_URL
     },
-    function (accessToken, refreshToken, profile, cb) {
+    function (accessToken, refreshToken, profile, done) {
         // console.log('GOOGLE PROFILE:', profile);
-        console.log('GOOGLE PROFILE ID:', profile.id);
+        // console.log('GOOGLE PROFILE ID:', profile.id);
         User.findOrCreate({
-            userId: profile.id
+            userId: profile.id,
+            email: profile.emails[0].value,
+            displayName: profile.name.givenName,
+            imageUrl: profile.photos[0].value,
+            provider: profile.provider,
+            boardContent: initialSkills
         },
         function (err, user) {
-            return cb(err, user);
+            return done(err, user);
         });
     }
 ));
@@ -49,13 +55,19 @@ passport.use(new GoogleStrategy({
 passport.use(new GitHubStrategy({
     clientID: process.env.GITHUB_CLIENT_ID,
     clientSecret: process.env.GITHUB_CLIENT_SECRET,
-    callbackURL: process.env.GITHUB_CALLBACK_URL
+    callbackURL: process.env.GITHUB_CALLBACK_URL,
+    scope: 'user:email'
     },
     function(accessToken, refreshToken, profile, done) {
         // console.log('GITHUB PROFILE:', profile);
-        console.log('GITHUB PROFILE ID:', profile.id);
+        // console.log('GITHUB PROFILE ID:', profile.id);
         User.findOrCreate({
-            githubId: profile.id
+            userId: profile.id,
+            email: profile.emails[0].value,
+            displayName: profile.displayName.split(' ')[0],
+            imageUrl: profile.photos[0].value,
+            provider: profile.provider,
+            boardContent: initialSkills
         },
         function (err, user) {
             return done(err, user);
@@ -67,30 +79,36 @@ passport.use(new GitHubStrategy({
 passport.use(new FacebookStrategy({
     clientID: process.env.FACEBOOK_APP_ID,
     clientSecret: process.env.FACEBOOK_APP_SECRET,
-    callbackURL: process.env.FACEBOOK_CALLBACK_URL
+    callbackURL: process.env.FACEBOOK_CALLBACK_URL,
+    profileFields: [ 'id', 'emails', 'name' ]
     },
-    function(accessToken, refreshToken, profile, cb) {
+    function(accessToken, refreshToken, profile, done) {
         // console.log('FACEBOOK PROFILE:', profile);
-        console.log('FACEBOOK PROFILE ID:', profile.id);
+        // console.log('FACEBOOK PROFILE ID:', profile.id);
         User.findOrCreate({
-            facebookId: profile.id
+            userId: profile.id,
+            email: profile.emails[0].value,
+            displayName: profile.name.givenName,
+            imageUrl: '../images/Facebook-Blacklist-Zuckerberg.jpg',
+            provider: profile.provider,
+            boardContent: initialSkills
         },
         function (err, user) {
-            return cb(err, user);
+            return done(err, user);
         });
     }
 ));
 
 
 passport.serializeUser(function (user, done) {
-    console.log('SERIALIZE USER:', user);
-    console.log('SERIALIZE USER.ID:', user.id);
-    console.log('SERIALIZE USER.USERID:', user.userId);
+    // console.log('SERIALIZE USER:', user);
+    // console.log('SERIALIZE USER.ID:', user.id);
+    // console.log('SERIALIZE USER.USERID:', user.userId);
     done(null, user.id);
 });
 
 passport.deserializeUser(function (id, done) {
-    console.log('DESERIALIZE ID:', id);
+    // console.log('DESERIALIZE ID:', id);
     User.findById(id)
         .then((id) => {
             done(null, id);
