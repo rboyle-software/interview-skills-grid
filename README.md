@@ -18,3 +18,4 @@ Use this app to track and prioritize the topics you need to study during your jo
 - [ ] transitions and animations
 - [ ] user account page
 - [ ] edit via modal window rather than right-side interface
+- [ ] greet the user by first name
