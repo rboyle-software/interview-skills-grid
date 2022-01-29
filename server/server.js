@@ -19,10 +19,14 @@ app.use(favicon(path.join(__dirname, '../images', 'favicon.png')));
 
 const PORT = process.env.PORT || 3000;
 
-mongoose.connect(process.env.MONGO_URI, {
+main().catch((err) => console.log(err));
+
+async function main() {
+    await mongoose.connect(process.env.MONGO_URI, {
     useNewUrlParser: true,
-    useUnifiedTopology: true }
-);
+    useUnifiedTopology: true
+    });
+}
 
 mongoose.connection.once('open', () => {
     console.log('Connected to Database');
@@ -57,8 +61,8 @@ const isLoggedIn = (req, res, next) => {
         console.log('User is logged in!');
         next();
     } else {
+        console.log('User is not logged in!')
         res.sendStatus(401);
-        console.log('You are not logged in!');
     }
 }
 
@@ -79,12 +83,10 @@ app.get('/skills-grid', isLoggedIn, (req, res, next) => {
 
 
 app.get('/user-skills', userController.getUserSkills, (req, res) => {
-    // console.log('SERVER', res.locals.user);
     res.status(200).json(res.locals.user);
 });
 
 app.put('/user-skills', userController.updateUserSkills, (req, res) => {
-    // console.log('SERVER', req.body);
     res.status(200);
 });
 

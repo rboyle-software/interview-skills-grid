@@ -1,52 +1,78 @@
 @light-gray: rgb(155, 155, 155);
-@dark-gray: rgb(61, 61, 61);
+@dark-gray: rgb(80, 80, 80);
 
 #form-area {
+    display: block;
     position: absolute;
     right: 7%;
     top: 50%;
     transform: translateY(-50%);
-    height: 400px;
-    width: 300px;
+    height: 46%;
+    width: 18%;
     padding: 20px;
     background-color: @light-gray;
-    border: solid 2px black;
+    border: solid 1.2px black;
     border-radius: 15px;
-    box-shadow: -2px 3px 20px rgb(0, 0, 0);
+    box-shadow: -2px 3px 15px rgba(0, 0, 0, 0.801);
 }
 
 #user-input {
     display: flex;
-    // flex-direction: column;
-    justify-content: center;
     flex-wrap: wrap;
     align-items: center;
+    justify-content: center;
     text-align: center;
 
-    ::placeholder {
-        text-align: center;
-        transform: translateX(-7px);
-    }
     input {
-        height: 2rem;
         margin: 20px 0px 20px;
+        border: solid 2px @dark-gray;
+        border-radius: 4px;
+
+        &[type=text] {
+            height: 2rem;
+            color: rgb(59, 59, 59);
+            padding-left: 10px;
+            font-weight: bold;
+            font-family: 'Courier New', Courier, monospace;
+        }
+
+        &::placeholder {
+            color:rgba(36, 65, 119, 0.384)
+        }
     }
+
     label {
         margin-right: 10px;
+        font-size: 0.8rem;
+        font-family: Verdana, Geneva, Tahoma, sans-serif;
+        font-weight: bold;
+
+        &:nth-last-child(-n+4) {
+            margin-left: 5px;
+        }
     }
 }
 
 #submit-button {
     margin-top: 20px;
-    height: 40px;
+    height: 60px !important;
     width: 200px;
-    border: solid 2px @dark-gray;
     border-radius: 3px;
+    font-size: 1.1rem;
+
+    &:hover {
+        background-image: linear-gradient(rgb(148, 148, 148), rgb(119, 119, 119));
+
+    }
+
+    &:not(:hover) {
+        background-image: linear-gradient(rgb(160, 160, 160), rgb(133, 133, 133));
+    }
 }
 
 #box-value {
-    height: 130px;
-    margin: 10px 20px 20px;
+    height: 150px;
+    margin: 15px 15px 25px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -55,13 +81,12 @@
     font-family:'Courier New', Courier, monospace;
     text-align: center;
     font-weight: bold;
-    // background-image: linear-gradient(rgb(109, 131, 110), rgb(181, 187, 165));
+    border: solid 1.5px @dark-gray;
+    border-radius: 3px;
     background-color: black;
     background-image: radial-gradient(
       rgba(126, 150, 126, 0.75), rgb(144, 150, 135) 120%
     );
-    border: solid 1.5px @dark-gray;
-    border-radius: 5px;
-    box-shadow: inset 2px 2px 30px 10px rgba(139, 177, 35, 0.274);
+    box-shadow: 2px 2px 30px 10px rgba(49, 114, 24, 0.247), inset 2px 2px 30px 10px rgba(139, 177, 35, 0.096);
     text-shadow: 2px -2px 1px rgba(0, 0, 0, 0.144), -1px 2px 1px rgba(0, 0, 0, 0.199);;
 }

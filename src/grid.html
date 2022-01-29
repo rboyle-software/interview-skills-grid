@@ -79,12 +79,18 @@
 
             <form id="user-input">
 
-                <label>New Topic:</label>
-                <input type="text" id="text-input" placeholder="Enter text">
+                <label>New Topic:
+                    <input type="text" id="text-input" placeholder="Enter text">
+                </label>
 
-                <label>Status:</label>
-                <input type="radio" id="outRadio" name="status" value="outstanding"><label for="outRadio">Outstanding</label>
-                <input type="radio" id="acqRadio" name="status" value="acquired"><label for="acqRadio">Acquired</label>
+                <label>Status:
+                    <label class="status" for="outRadio">Outstanding
+                        <input class="radio" id="outRadio" type="radio" name="status" value="outstanding">
+                    </label>
+                    <label class="status" for="acqRadio">Acquired
+                        <input class="radio" id="acqRadio" type="radio" name="status" value="acquired">
+                    </label>
+                </label>
 
                 <input type="submit" id="submit-button" value="Update Box">
 
