@@ -11,6 +11,8 @@ TODO:
 - [ ] integrate with CS Study Buddy
 - [x] implement O-Auth for Google and GitHub
 - [ ] unify styling between components
+- [ ] make it responsive (no squishing or covering)
+- [ ] make it mobile-friendly
 - [ ] Undo history
 - [ ] Transitions and animations
 - [ ] User account page
