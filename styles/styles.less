@@ -1,6 +1,7 @@
 @light-blue: rgb(30, 127, 206);
 @dark-blue: rgb(47, 76, 114);
 @light-gray: rgb(220, 220, 220);
+@faded-purple: rgb(85, 59, 81);
 
 * {
     margin: 0;
@@ -15,13 +16,13 @@ a {
 #application {
     height: 100vh;
     width: 100vw;
-    background-color: @dark-blue;
+    background-image: linear-gradient(-15deg, rgb(34, 56, 83), rgb(31, 67, 116));
 }
 
 #login {
     height: 100vh;
     width: 100vw;
-    background-color:rgb(85, 59, 81);
+    background-color: @faded-purple;
 }
 
 #top-menu {
@@ -42,7 +43,15 @@ a {
             transition: 400ms;
             padding: 20px 40px 20px;
         }
-        li:nth-child(-n+2), li:nth-last-child(2) {
+        > img {
+            height: 55px;
+            width: 55px;
+            background-color: @dark-blue;
+            object-fit: cover;
+            border: solid 2px @light-gray;
+            align-self: center;
+        }
+        li:nth-child(-n+2), li:nth-last-child(3) {
             border-right: solid 2px @light-gray;
         }
         li:nth-child(4) {
@@ -51,7 +60,7 @@ a {
         li:hover {
             transition: 400ms;
             text-shadow: 1px 1px 0px black;
-            background-color: rgb(177, 55, 177);
+            background-color: @faded-purple;
             cursor: pointer;
         }
     }
