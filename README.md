@@ -2,7 +2,7 @@
 Use this app to track and prioritize the topics you need to study during your job search.
 
 
-TODO:
+### To Do:
 
 - [x] implement O-Auth for Google, GitHub, Facebook
 - [x] connect to MongoDB
