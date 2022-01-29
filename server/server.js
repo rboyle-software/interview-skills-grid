@@ -54,6 +54,7 @@ app.use(passport.session());
 
 const isLoggedIn = (req, res, next) => {
     if (req.user) {
+        console.log('User is logged in!');
         next();
     } else {
         res.sendStatus(401);
@@ -72,15 +73,21 @@ app.get('/auth-failed', (req, res) => {
 });
 
 
-app.get('/skills-grid', [isLoggedIn, userController.getCurrent], (req, res) => {
-    // console.log(req.user);
+app.get('/skills-grid', isLoggedIn, (req, res, next) => {
     res.sendFile(path.join(__dirname, '../src/grid.html'));
 });
 
 
-app.patch('/skills-grid', userController.modCurrent, (req, res) => {
-    res.sendStatus(200).json();
+app.get('/user-skills', userController.getUserSkills, (req, res) => {
+    // console.log('SERVER', res.locals.user);
+    res.status(200).json(res.locals.user);
 });
+
+app.put('/user-skills', userController.updateUserSkills, (req, res) => {
+    // console.log('SERVER', req.body);
+    res.status(200);
+});
+
 
 
 // authorize with Google

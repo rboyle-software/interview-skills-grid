@@ -105,7 +105,7 @@ passport.use(new FacebookStrategy({
             userId: profile.id,
             email: profile.emails[0].value,
             displayName: profile.name.givenName,
-            imageUrl: '../images/Facebook-Blacklist-Zuckerberg.jpg',
+            imageUrl: 'Facebook-Blacklist-Zuckerberg.jpg',
             provider: profile.provider,
             boardContent: initialSkills
         }
