@@ -13,7 +13,7 @@ TODO:
 - [ ] unify styling between components
 - [ ] make it responsive (no squishing or covering)
 - [ ] make it mobile-friendly
-- [ ] Undo history
-- [ ] Transitions and animations
-- [ ] User account page
-- [ ] Edit via modal window rather than right-side interface
+- [ ] undo history
+- [ ] transitions and animations
+- [ ] user account page
+- [ ] edit via modal window rather than right-side interface
