@@ -7,7 +7,7 @@ TODO:
 - [x] connect to MongoDB
 - [x] boxes display green based on acquired property
 - [x] allow user to enter/edit innerText (entry form, modal)
-- [ ] rebuild as a React component
+- [ ] rebuild in React / TypeScript
 - [ ] integrate with CS Study Buddy
 - [x] implement O-Auth for Google and GitHub
 - [ ] unify styling between components
