@@ -4,12 +4,12 @@ Use this app to track and prioritize the topics you need to study during your jo
 
 TODO:
 
+- [x] implement O-Auth for Google, GitHub, Facebook
 - [x] connect to MongoDB
-- [x] boxes display green based on acquired property
-- [x] allow user to enter/edit innerText (entry form, modal)
+- [x] boxes display color based on status property
+- [x] allow user to enter/edit innerText
 - [ ] rebuild in React / TypeScript
 - [ ] integrate with CS Study Buddy
-- [x] implement O-Auth for Google and GitHub
 - [ ] unify styling between components
 - [ ] make it responsive (no squishing or covering)
 - [ ] make it mobile-friendly
