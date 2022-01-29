@@ -14,3 +14,4 @@ TODO:
 - [ ] Undo history
 - [ ] Transitions and animations
 - [ ] User account page
+- [ ] Edit via modal window rather than right-side interface
