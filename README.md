@@ -8,6 +8,7 @@ Use this app to track and prioritize the topics you need to study during your jo
 - [x] connect to MongoDB
 - [x] boxes display color based on status property
 - [x] allow user to enter/edit innerText
+- [ ] improve routing and file/folder structure
 - [ ] style radio buttons similar to https://codepen.io/dsenneff/pen/ZoLVZW
 - [ ] rebuild in React / TypeScript
 - [ ] integrate with CS Study Buddy
