@@ -8,7 +8,7 @@ TODO:
 - [x] connect to MongoDB
 - [x] boxes display color based on status property
 - [x] allow user to enter/edit innerText
-- [ ] style radio button similar to https://codepen.io/dsenneff/pen/ZoLVZW
+- [ ] style radio buttons similar to https://codepen.io/dsenneff/pen/ZoLVZW
 - [ ] rebuild in React / TypeScript
 - [ ] integrate with CS Study Buddy
 - [ ] unify styling between components
