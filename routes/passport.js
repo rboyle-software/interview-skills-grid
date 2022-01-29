@@ -1,7 +1,7 @@
 const passport = require('passport');
 const GoogleStrategy = require('passport-google-oauth20').Strategy;
-const GitHubStrategy = require('passport-github2').Strategy;
 const FacebookStrategy = require('passport-facebook').Strategy;
+const GitHubStrategy = require('passport-github2').Strategy;
 const { User } = require('../models/UserModel');
 const path = require('path');
 require('dotenv').config();
@@ -27,16 +27,12 @@ const initialSkills = [
 ];
 
 
-// User.findOneAndUpdate( { googleId: profile.id }, { $set: { "boardContent": [ { "value": "TEST" } ] } } );
-
 passport.use(new GoogleStrategy({
     clientID: process.env.GOOGLE_CLIENT_ID,
     clientSecret: process.env.GOOGLE_CLIENT_SECRET,
     callbackURL: process.env.GOOGLE_CALLBACK_URL
     },
     async (accessToken, refreshToken, profile, done) => {
-        // console.log('GOOGLE PROFILE:', profile);
-        // console.log('GOOGLE PROFILE ID:', profile.id);
         const newUser = {
             userId: profile.id,
             email: profile.emails[0].value,
@@ -67,8 +63,6 @@ passport.use(new GitHubStrategy({
     scope: 'user:email'
     },
     async (accessToken, refreshToken, profile, done) => {
-        // console.log('GITHUB PROFILE:', profile);
-        // console.log('GITHUB PROFILE ID:', profile.id);
         const newUser = {
             userId: profile.id,
             email: profile.emails[0].value,
@@ -99,8 +93,6 @@ passport.use(new FacebookStrategy({
     profileFields: [ 'id', 'emails', 'name' ]
     },
     async (accessToken, refreshToken, profile, done) => {
-        // console.log('FACEBOOK PROFILE:', profile);
-        // console.log('FACEBOOK PROFILE ID:', profile.id);
         const newUser = {
             userId: profile.id,
             email: profile.emails[0].value,
@@ -125,14 +117,10 @@ passport.use(new FacebookStrategy({
 
 
 passport.serializeUser(function (user, done) {
-    // console.log('SERIALIZE USER:', user);
-    // console.log('SERIALIZE USER.ID:', user.id);
-    // console.log('SERIALIZE USER.USERID:', user.userId);
     done(null, user.id);
 });
 
 passport.deserializeUser(function (id, done) {
-    // console.log('DESERIALIZE ID:', id);
     User.findById(id)
         .then((id) => {
             done(null, id);

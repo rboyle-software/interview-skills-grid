@@ -1,7 +1,7 @@
 @light-blue: rgb(30, 127, 206);
 @dark-blue: rgb(47, 76, 114);
 @light-gray: rgb(220, 220, 220);
-@faded-purple: rgb(85, 59, 81);
+@faded-purple: rgb(124, 83, 118);
 
 * {
     margin: 0;
@@ -16,7 +16,7 @@ a {
 #application {
     height: 100vh;
     width: 100vw;
-    background-image: linear-gradient(-15deg, rgb(34, 56, 83), rgb(31, 67, 116));
+    background-image: linear-gradient(185deg, rgb(47, 82, 124), rgb(11, 35, 68));
 }
 
 #login {
@@ -26,6 +26,8 @@ a {
 }
 
 #top-menu {
+    display: grid;
+    grid-template-columns: auto 100px;
     width: 100vw;
     margin-bottom: 5%;
     color: @light-gray;
@@ -34,36 +36,48 @@ a {
     font-size: 1.25em;
     font-weight: bold;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+
     > ul {
         list-style: none;
         display: flex;
         padding-left: 50px;
         padding-right: 50px;
+
         > li {
-            transition: 400ms;
             padding: 20px 40px 20px;
-        }
-        > img {
-            height: 55px;
-            width: 55px;
-            background-color: @dark-blue;
-            object-fit: cover;
-            border: solid 2px @light-gray;
-            align-self: center;
-        }
-        li:nth-child(-n+2), li:nth-last-child(3) {
             border-right: solid 2px @light-gray;
         }
+
+        li:nth-child(3), li:nth-last-child(1) {
+            border: none;
+        }
+
         li:nth-child(4) {
             margin-left: auto;
         }
+
         li:hover {
             transition: 400ms;
             text-shadow: 1px 1px 0px black;
-            background-color: @faded-purple;
+            background-color: rgba(199, 23, 199, 0.342);
             cursor: pointer;
         }
+
+        li:not(:hover) {
+            transition: 400ms;
+            background-color: @light-blue;
+        }
     }
+}
+
+.user-image {
+    display: block;
+    height: 55px;
+    width: 55px;
+    background-color: @dark-blue;
+    object-fit: cover;
+    border: solid 2px @light-gray;
+    align-self: center;
 }
 
 #board {
@@ -108,6 +122,7 @@ a {
 .outstanding {
     transition: 200ms;
     background-color: rgb(172, 172, 172);
+
     &:hover {
         transition: 400ms;
         background-color: aliceblue;
@@ -119,6 +134,7 @@ a {
 .acquired {
     transition: 200ms;
     background-color: rgb(71, 155, 71);
+
     &:hover {
         transition: 400ms;
         background-color: chartreuse;

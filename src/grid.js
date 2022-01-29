@@ -1,17 +1,14 @@
 window.onload = function() {
 
-
-
     // select the main board div
     const board = document.querySelector('#board');
     // select the form field where new box values are entered
     const boxValue = document.querySelector('#box-value');
     // select the user input form
     const userInput = document.querySelector('#user-input');
-
+    // select the submit button
     const submitButton = document.querySelector('#submit-button');
     submitButton.onclick = submitForm;
-
 
 
     // get and display the current user's skills array
@@ -25,7 +22,7 @@ window.onload = function() {
         const image = document.createElement('img');
         image.src = user.imageUrl;
         image.classList.add('user-image');
-        document.querySelector('#top-menu ul').append(image);
+        document.querySelector('#top-menu').append(image);
     }
     // invoke
     getSkillsArray();
@@ -35,7 +32,7 @@ window.onload = function() {
     function boxSelect() {
         content = this.innerText;
         index = this.key;
-        boxValue.innerText = 'Box# ' + index + '\n' + content;
+        boxValue.innerText = 'Box#'.concat(' ', index, '\n', content);
     }
     // toggle color via form submit
     function toggleColor() {
@@ -46,13 +43,14 @@ window.onload = function() {
 
     // to-do: update from itraversing hardcoded array to acquiring user array
     function populateBoard(arrayOfSkills) {
+
         return arrayOfSkills.forEach((skill, index) => {
             const box = document.createElement('div');
 
-            box.innerText = skill.value;
             box.key = index;
             box.onclick = boxSelect;
             box.classList.add('boxes');
+            box.innerText = skill.value;
 
             if (skill.status === 'outstanding') {
                 box.classList.add('outstanding');
@@ -67,43 +65,41 @@ window.onload = function() {
 
     function submitForm(e) {
         e.preventDefault();
+
+        // select all boxes, input text, text from interface screen, and radio buttons
+        const boxes = document.querySelectorAll('.boxes');
+        const newValue = document.querySelector('#text-input').value;
         const boxValue = document.querySelector('#box-value').innerText;
         const radioButtons = document.querySelectorAll('[name="status"]');
 
+        // if no box selected OR if no status selected, alert and return
         if (boxValue === '' || (!radioButtons[0].checked && !radioButtons[1].checked)) {
             alert('                    NO BOX SELECTED OR NO STATUS SELECTED!!');
             return;
         }
 
-        const boxes = document.querySelectorAll('.boxes');
-        const boxIndex = boxValue.match(/\b(0?[0-9]|[1-9][0-9]|100)\b/g)[0];
-        const newValue = document.querySelector('#text-input').value;
+        // prepare update for box and interface
         const newStatus = radioButtons[0].checked ? radioButtons[0].value : radioButtons[1].value;
         const oldStatus = radioButtons[0].checked ? radioButtons[1].value : radioButtons[0].value;
-
-        console.log(newStatus, oldStatus);
-
-        // console.log(boxIndex);
-        // console.log(newValue);
-        // console.log(newStatus);
-
+        const boxIndex = boxValue.match(/\b(0?[0-9]|[1-9][0-9]|100)\b/g)[0];
         const selectedBox = boxes[boxIndex];
+
         selectedBox.innerText = newValue;
         selectedBox.classList.add(newStatus);
         selectedBox.classList.remove(oldStatus);
-        console.log(![...selectedBox.classList].includes(newStatus));
 
-        const newBody = {
+        const updateObject = {
             status: newStatus,
             value: newValue,
             index: boxIndex,
         }
-        console.log(newBody);
+
+        document.querySelector('#box-value').innerText = 'Box#'.concat(' ', boxIndex, '\n', newValue);
 
         const request = fetch('/user-skills', {
             method: 'PUT',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(newBody)
+            body: JSON.stringify(updateObject)
         });
 
     }
