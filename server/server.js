@@ -58,7 +58,6 @@ app.use(passport.session());
 
 const isLoggedIn = (req, res, next) => {
     if (req.user) {
-        console.log('User is logged in!');
         next();
     } else {
         console.log('User is not logged in!')
@@ -141,6 +140,12 @@ app.get('/logout', (req, res) => {
     req.session = null;
     req.logout();
     res.redirect('/');
+});
+
+
+app.use((err, req, res, next) => {
+  console.error(err.stack);
+  res.status(500).send('An error has occurred!');
 });
 
 
