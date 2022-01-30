@@ -2,12 +2,13 @@ window.onload = function() {
 
     // select the main board div
     const board = document.querySelector('#board');
-    // select the form field where new box values are entered
+    // select the form input text field
     const boxValue = document.querySelector('#box-value');
     // select the user input form
     const userInput = document.querySelector('#user-input');
     // select the submit button
     const submitButton = document.querySelector('#submit-button');
+    // add click listener
     submitButton.onclick = submitForm;
 
 
@@ -28,13 +29,15 @@ window.onload = function() {
     getSkillsArray();
 
 
-    // select the box that is clicked and display it's content
+    // select the box that is clicked and display its content
     function boxSelect() {
+        const newTopic = document.querySelector('#text-input');
         content = this.innerText;
         index = this.key;
         boxValue.innerText = 'Box#'.concat(' ', index, '\n', content);
+        newTopic.value = content;
     }
-    // toggle color via form submit
+    // toggle box color
     function toggleColor() {
         this.classList.toggle('outstanding');
         this.classList.toggle('acquired');
@@ -66,8 +69,8 @@ window.onload = function() {
     function submitForm(e) {
         e.preventDefault();
 
-        // select all boxes, input text, text from interface screen, and radio buttons
-        const boxes = document.querySelectorAll('.boxes');
+        // select array of all boxes, form input text, interface screen text, and radio buttons
+        const boxes = board.querySelectorAll('.boxes');
         const newValue = document.querySelector('#text-input').value;
         const boxValue = document.querySelector('#box-value').innerText;
         const radioButtons = document.querySelectorAll('[name="status"]');
