@@ -2,12 +2,13 @@ window.onload = function() {
 
     // select the main board div
     const board = document.querySelector('#board');
-    // select the form field where new box values are entered
+    // select the form input text field
     const boxValue = document.querySelector('#box-value');
     // select the user input form
     const userInput = document.querySelector('#user-input');
     // select the submit button
     const submitButton = document.querySelector('#submit-button');
+    // add click listener
     submitButton.onclick = submitForm;
 
 
@@ -28,13 +29,13 @@ window.onload = function() {
     getSkillsArray();
 
 
-    // select the box that is clicked and display it's content
+    // select the box that is clicked and display its content
     function boxSelect() {
         content = this.innerText;
         index = this.key;
         boxValue.innerText = 'Box#'.concat(' ', index, '\n', content);
     }
-    // toggle color via form submit
+    // toggle box color
     function toggleColor() {
         this.classList.toggle('outstanding');
         this.classList.toggle('acquired');
