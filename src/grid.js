@@ -31,9 +31,11 @@ window.onload = function() {
 
     // select the box that is clicked and display its content
     function boxSelect() {
+        const newTopic = document.querySelector('#text-input');
         content = this.innerText;
         index = this.key;
         boxValue.innerText = 'Box#'.concat(' ', index, '\n', content);
+        newTopic.value = content;
     }
     // toggle box color
     function toggleColor() {
@@ -67,8 +69,8 @@ window.onload = function() {
     function submitForm(e) {
         e.preventDefault();
 
-        // select all boxes, input text, text from interface screen, and radio buttons
-        const boxes = document.querySelectorAll('.boxes');
+        // select array of all boxes, form input text, interface screen text, and radio buttons
+        const boxes = board.querySelectorAll('.boxes');
         const newValue = document.querySelector('#text-input').value;
         const boxValue = document.querySelector('#box-value').innerText;
         const radioButtons = document.querySelectorAll('[name="status"]');
