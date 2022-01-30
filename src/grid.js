@@ -41,7 +41,7 @@ window.onload = function() {
     }
 
 
-    // to-do: update from itraversing hardcoded array to acquiring user array
+    // populate the board with values from the user's boardContent array
     function populateBoard(arrayOfSkills) {
 
         return arrayOfSkills.forEach((skill, index) => {
@@ -98,18 +98,22 @@ window.onload = function() {
         const boxIndex = boxValue.match(/\b(0?[0-9]|[1-9][0-9]|100)\b/g)[0];
         const selectedBox = boxes[boxIndex];
 
+        // update box
         selectedBox.innerText = newValue;
         selectedBox.classList.add(newStatus);
         selectedBox.classList.remove(oldStatus);
 
+        // update the interface
+        document.querySelector('#box-value').innerText = 'Box#'.concat(' ', boxIndex, '\n', newValue);
+
+        // prepare database update
         const updateObject = {
             status: newStatus,
             value: newValue,
             index: boxIndex,
         }
 
-        document.querySelector('#box-value').innerText = 'Box#'.concat(' ', boxIndex, '\n', newValue);
-
+        // update database
         const request = fetch('/user-skills', {
             method: 'PUT',
             headers: { 'Content-Type': 'application/json' },
