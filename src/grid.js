@@ -72,9 +72,23 @@ window.onload = function() {
         const boxValue = document.querySelector('#box-value').innerText;
         const radioButtons = document.querySelectorAll('[name="status"]');
 
-        // if no box selected OR if no status selected, alert and return
-        if (boxValue === '' || (!radioButtons[0].checked && !radioButtons[1].checked)) {
-            alert('                    NO BOX SELECTED OR NO STATUS SELECTED!!');
+        // alert if no Box selected
+        if (boxValue === '') {
+            Swal.fire(
+                'Please select a box on the grid!',
+                '',
+                'error'
+            );
+            return;
+        }
+
+        // alert if no Status radio selected
+        if (!radioButtons[0].checked && !radioButtons[1].checked) {
+            Swal.fire(
+                'Please select a "Status"!',
+                '',
+                'error'
+            );
             return;
         }
 

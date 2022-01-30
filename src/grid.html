@@ -28,28 +28,28 @@
     <script>less.watch();</script>
 
 
-<script>
-    window.fbAsyncInit = function() {
-      FB.init({
-        appId      : '{your-app-id}',
-        cookie     : true,
-        xfbml      : true,
-        version    : '{api-version}'
-      });
-        
-      FB.AppEvents.logPageView();   
-        
-    };
-  
-    (function(d, s, id){
-       var js, fjs = d.getElementsByTagName(s)[0];
-       if (d.getElementById(id)) {return;}
-       js = d.createElement(s); js.id = id;
-       js.src = "https://connect.facebook.net/en_US/sdk.js";
-       fjs.parentNode.insertBefore(js, fjs);
-     }(document, 'script', 'facebook-jssdk'));
-</script>
+    <script>
+        window.fbAsyncInit = function() {
+          FB.init({
+            appId      : '{your-app-id}',
+            cookie     : true,
+            xfbml      : true,
+            version    : '{api-version}'
+          });
+          FB.AppEvents.logPageView();
+        };
 
+        (function(d, s, id){
+            var js, fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id)) {return;}
+            js = d.createElement(s); js.id = id;
+            js.src = "https://connect.facebook.net/en_US/sdk.js";
+            fjs.parentNode.insertBefore(js, fjs);
+        }
+        (document, 'script', 'facebook-jssdk'));
+    </script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <link rel="stylesheet/less" type="text/css" href="modals.less">
     <script src="grid.js" type="text/javascript"></script>
 </head>
 <body>
