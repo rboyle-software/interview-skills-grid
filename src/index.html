@@ -4,9 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@450&display=swap');
-    </style>
+    <style>@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@450&display=swap');</style>
 
     <title>Interview Skills Grid</title>
     
@@ -26,34 +24,37 @@
     <script src="//cdnjs.cloudflare.com/ajax/libs/less.js/2.5.1/less.min.js" type="text/javascript"></script>
     <script>less.watch();</script>
 
-    
-<script>
-    window.fbAsyncInit = function() {
-      FB.init({
-        appId      : '{your-app-id}',
-        cookie     : true,
-        xfbml      : true,
-        version    : '{api-version}'
-      });
-        
-      FB.AppEvents.logPageView();   
-        
-    };
-  
-    (function(d, s, id){
-       var js, fjs = d.getElementsByTagName(s)[0];
-       if (d.getElementById(id)) {return;}
-       js = d.createElement(s); js.id = id;
-       js.src = "https://connect.facebook.net/en_US/sdk.js";
-       fjs.parentNode.insertBefore(js, fjs);
-     }(document, 'script', 'facebook-jssdk'));
-</script>
+
+    <script>
+        window.fbAsyncInit = function() {
+          FB.init({
+            appId      : '{your-app-id}',
+            cookie     : true,
+            xfbml      : true,
+            version    : '{api-version}'
+          });
+
+          FB.AppEvents.logPageView();
+
+        };
+
+        (function(d, s, id){
+           var js, fjs = d.getElementsByTagName(s)[0];
+           if (d.getElementById(id)) {return;}
+           js = d.createElement(s); js.id = id;
+           js.src = "https://connect.facebook.net/en_US/sdk.js";
+           fjs.parentNode.insertBefore(js, fjs);
+         }(document, 'script', 'facebook-jssdk'));
+    </script>
 
     <script src="index.js" type="text/javascript"></script>
+    
 
 </head>
 <body>
+
     <div id="login">
+
         <nav id="top-menu">
             <ul>
                 <li>Home</li>
@@ -63,6 +64,7 @@
                 <li>My Account</li>
             </ul>
         </nav>
+
         <div id="board">
             <div class="boxes">Oh, hello.</div>
             <div class="boxes"></div>
@@ -87,6 +89,7 @@
             <div class="boxes"></div>
             <div class="boxes">Welcome to the Interview Skills Grid!</div>
         </div>
+
     </div>
 </body>
 </html>
