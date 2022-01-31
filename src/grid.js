@@ -8,7 +8,7 @@ window.onload = function() {
     const userInput = document.querySelector('#user-input');
     // select the submit button
     const submitButton = document.querySelector('#submit-button');
-    // add click listener
+    // add click listener to submit button
     submitButton.onclick = submitForm;
 
 
