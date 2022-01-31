@@ -18,17 +18,4 @@ window.onload = function() {
             box.classList.add('outstanding');
         }
     }
-
-
-
-
-    const swalButt = document.querySelector('#swal-fire');
-    swalButt.addEventListener('click', function() {
-        Swal.fire(
-            'The Internet?',
-            'That thing is still around?',
-            'question'
-        )
-    });
-
 }
