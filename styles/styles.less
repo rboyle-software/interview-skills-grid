@@ -1,12 +1,18 @@
 @light-blue: rgb(30, 127, 206);
-@dark-blue: rgb(47, 76, 114);
+@medium-blue: rgb(47, 82, 124);
+@dark-blue: rgb(11, 35, 68);
 @light-gray: rgb(220, 220, 220);
+@dark-gray: rgb(70, 70, 70);
 @faded-purple: rgb(124, 83, 118);
 
 * {
     margin: 0;
     padding: 0;
 }
+
+*, *:before, *:after {
+    box-sizing: border-box;
+  }
 
 a {
     text-decoration: none;
@@ -16,7 +22,7 @@ a {
 #application {
     height: 100vh;
     width: 100vw;
-    background-image: linear-gradient(185deg, rgb(47, 82, 124), rgb(11, 35, 68));
+    background-image: linear-gradient(185deg, @medium-blue, @dark-blue);
 }
 
 #login {
@@ -31,7 +37,6 @@ a {
     width: 100vw;
     margin-bottom: 5%;
     color: @light-gray;
-    background-image: linear-gradient(240deg, rgba(5, 38, 83, 0.781), @light-blue 130px);
     background-color: @light-blue;
     box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.863);
     font-size: 1.25em;
@@ -73,19 +78,19 @@ a {
 
 .user-image {
     display: block;
+    align-self: center;
     height: 55px;
     width: 55px;
-    background-color: @dark-blue;
     object-fit: cover;
-    border: solid 0px @light-gray;
+    background-color: @dark-blue;
+    border: solid 2px @light-gray;
     border-radius: 10%;
-    align-self: center;
 }
 
 #board {
     position: absolute;
     left: 40%;
-    transform: translateX(-50%);
+    transform: translateX(-25vw);
     display: grid;
     grid-gap: 2%;
     grid-template-rows: repeat(4, 1fr);
@@ -93,7 +98,7 @@ a {
     padding: 1em 1em 1em 1em;
     height: 70%;
     width: 50%;
-    background-color: rgb(70, 70, 70);
+    background-color: @dark-gray;
     border: solid 3px black;
     border-radius: 15px;
     box-shadow: -5px 5px 10px rgba(0, 0, 0, 0.781);

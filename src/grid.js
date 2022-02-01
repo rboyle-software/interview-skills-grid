@@ -73,31 +73,21 @@ window.onload = function() {
         const boxes = board.querySelectorAll('.boxes');
         const newValue = document.querySelector('#text-input').value;
         const boxValue = document.querySelector('#box-value').innerText;
-        const radioButtons = document.querySelectorAll('[name="status"]');
+        const radioButtons = document.querySelectorAll('.radio');
 
         // alert if no Box selected
         if (boxValue === '') {
             Swal.fire(
                 'Please select a box on the grid!',
                 '',
-                'error'
-            );
-            return;
-        }
-
-        // alert if no Status radio selected
-        if (!radioButtons[0].checked && !radioButtons[1].checked) {
-            Swal.fire(
-                'Please select a "Status"!',
-                '',
-                'error'
+                'question'
             );
             return;
         }
 
         // prepare update for box and interface
-        const newStatus = radioButtons[0].checked ? radioButtons[0].value : radioButtons[1].value;
-        const oldStatus = radioButtons[0].checked ? radioButtons[1].value : radioButtons[0].value;
+        const newStatus = radioButtons[0].checked ? radioButtons[0].id : radioButtons[1].id;
+        const oldStatus = radioButtons[0].checked ? radioButtons[1].id : radioButtons[0].id;
         const boxIndex = boxValue.match(/\b(0?[0-9]|[1-9][0-9]|100)\b/g)[0];
         const selectedBox = boxes[boxIndex];
 
