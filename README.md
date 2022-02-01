@@ -30,6 +30,7 @@ Try it for yourself! --> <a href="https://interview-skills-grid.herokuapp.com/" 
 - [ ] style modals and their content
 - [ ] make it responsive (no squishing or covering)
 - [ ] make it mobile-friendly
+- [ ] CSS 3D card flip effect
 - [ ] implement undo history
 - [ ] more transitions and animations
 - [ ] user account page
