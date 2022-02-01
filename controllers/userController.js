@@ -30,12 +30,13 @@ userController.updateUserSkills = (req, res, next) => {
     User.findOneAndUpdate(
         { userId: updateId },
         { [`boardContent.${index}`]: updateObject },
-        { returnDocument: 'after' },
+        // { returnDocument: 'after' },
         (err, update) => {
             if (err) {
                 return next(err);
             }
-            return next(update);
+            // console.log(update);
+            return next();
         });
 }
 

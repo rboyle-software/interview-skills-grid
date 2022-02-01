@@ -86,7 +86,7 @@ app.get('/user-skills', userController.getUserSkills, (req, res) => {
 });
 
 app.put('/user-skills', userController.updateUserSkills, (req, res) => {
-    res.status(200);
+    res.sendStatus(200);
 });
 
 
