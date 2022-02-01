@@ -14,9 +14,14 @@ window.onload = function() {
 
     // get and display the current user's skills array
     async function getSkillsArray() {
+
         const response = await fetch('/user-skills', {
-            method: 'GET'
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json'
+            },
         });
+
         const user = await response.json();
         populateBoard(user.boardContent);
 
@@ -57,7 +62,8 @@ window.onload = function() {
 
             if (skill.status === 'outstanding') {
                 box.classList.add('outstanding');
-            } else if (skill.status === 'acquired') {
+            }
+            else if (skill.status === 'acquired') {
                 box.classList.add('acquired');
             }
 
@@ -109,7 +115,9 @@ window.onload = function() {
         // update database
         const request = fetch('/user-skills', {
             method: 'PUT',
-            headers: { 'Content-Type': 'application/json' },
+            headers: {
+                'Content-Type': 'application/json'
+            },
             body: JSON.stringify(updateObject)
         });
 
