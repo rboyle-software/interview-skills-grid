@@ -25,6 +25,7 @@ Try it for yourself! --> <a href="https://interview-skills-grid.herokuapp.com/" 
 - [ ] rebuild in React / TypeScript
 - [ ] integrate with CS Study Buddy
 - [ ] unify styling between components
+- [ ] style modals and their content
 - [ ] make it responsive (no squishing or covering)
 - [ ] make it mobile-friendly
 - [ ] implement undo history
