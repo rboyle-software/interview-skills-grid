@@ -5,9 +5,9 @@ Try it for yourself! --> <a href="https://interview-skills-grid.herokuapp.com/" 
 <br><br>
 
 <p align="center">
-  <img src="https://github.com/relandboyle/interview-skills-grid/blob/7d29c73e4d37fffcacb758bd1f924a81e1bd5bbe/images/2022-01-30_032553.png" width="600px">
+  <img src="https://github.com/Glorified-Software/interview-skills-grid/blob/5a2b3a329c3c2764c0313c73227f0384a7c94530/images/2022-01-31_230910.png" width="600px">
   <br><br>
-  <img src="https://github.com/relandboyle/interview-skills-grid/blob/7d29c73e4d37fffcacb758bd1f924a81e1bd5bbe/images/2022-01-30_032649.png" width="600px">
+  <img src="https://github.com/Glorified-Software/interview-skills-grid/blob/5a2b3a329c3c2764c0313c73227f0384a7c94530/images/2022-01-31_231007.png" width="600px">
 </p>
 <br><br>
 
@@ -21,9 +21,11 @@ Try it for yourself! --> <a href="https://interview-skills-grid.herokuapp.com/" 
 - [ ] nav links redirect to static pages (temporary)
 - [ ] improve routing and file/folder structure
 - [x] style radio buttons similar to https://codepen.io/dsenneff/pen/ZoLVZW
+- [ ] right-click to toggle box status
 - [ ] rebuild in React / TypeScript
 - [ ] integrate with CS Study Buddy
 - [ ] unify styling between components
+- [ ] style modals and their content
 - [ ] make it responsive (no squishing or covering)
 - [ ] make it mobile-friendly
 - [ ] implement undo history
