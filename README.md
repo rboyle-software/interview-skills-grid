@@ -21,6 +21,7 @@ Try it for yourself! --> <a href="https://interview-skills-grid.herokuapp.com/" 
 - [ ] nav links redirect to static pages (temporary)
 - [ ] improve routing and file/folder structure
 - [x] style radio buttons similar to https://codepen.io/dsenneff/pen/ZoLVZW
+- [ ] right-click to toggle box status
 - [ ] rebuild in React / TypeScript
 - [ ] integrate with CS Study Buddy
 - [ ] unify styling between components
