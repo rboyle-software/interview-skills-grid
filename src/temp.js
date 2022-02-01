@@ -7,11 +7,13 @@ window.onload = function() {
         this.classList.toggle('acquired');
     }
 
+    const greenBoxes = [0, 2, 5, 8];
+
     for (let i = 0; i < 16; i++) {
         const box = boxesArray[i];
         box.onclick = colorToggle;
 
-        if (i % 5 === 0 || i === 7) {
+        if (greenBoxes.includes(i)) {
             box.classList.add('acquired');
         } else {
             box.classList.add('outstanding');

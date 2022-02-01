@@ -70,6 +70,10 @@ app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, '../src/index.html'));
 });
 
+app.get('/temp', (req, res) => {
+    res.sendFile(path.join(__dirname, '../src/temp.html'));
+});
+
 app.get('/auth-failed', (req, res) => {
     res.send('Authorization Failed!');
     res.redirect('/test');
