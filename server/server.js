@@ -81,7 +81,7 @@ app.get('/auth-failed', (req, res) => {
 
 
 app.get('/skills-grid', isLoggedIn, (req, res, next) => {
-    res.sendFile(path.join(__dirname, '../src/grid.html'));
+    res.sendFile(path.join(__dirname, '../src/main.html'));
 });
 
 
