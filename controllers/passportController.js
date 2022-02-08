@@ -7,26 +7,6 @@ const path = require('path');
 require('dotenv').config();
 
 
-const initialSkills = [
-    {status: 'outstanding', value: ''},
-    {status: 'outstanding', value: ''},
-    {status: 'outstanding', value: ''},
-    {status: 'outstanding', value: ''},
-    {status: 'outstanding', value: ''},
-    {status: 'outstanding', value: ''},
-    {status: 'outstanding', value: ''},
-    {status: 'outstanding', value: ''},
-    {status: 'outstanding', value: ''},
-    {status: 'outstanding', value: ''},
-    {status: 'outstanding', value: ''},
-    {status: 'outstanding', value: ''},
-    {status: 'outstanding', value: ''},
-    {status: 'outstanding', value: ''},
-    {status: 'outstanding', value: ''},
-    {status: 'outstanding', value: ''},
-];
-
-
 passport.use(new GoogleStrategy({
     clientID: process.env.GOOGLE_CLIENT_ID,
     clientSecret: process.env.GOOGLE_CLIENT_SECRET,
@@ -39,7 +19,7 @@ passport.use(new GoogleStrategy({
             displayName: profile.name.givenName,
             imageUrl: profile.photos[0].value,
             provider: profile.provider,
-            boardContent: initialSkills
+            boardContent: initialSkills()
         }
         try {
             let user = await User.findOne( { userId: profile.id } );
@@ -69,7 +49,7 @@ passport.use(new GitHubStrategy({
             displayName: profile.displayName.split(' ')[0],
             imageUrl: profile.photos[0].value,
             provider: profile.provider,
-            boardContent: initialSkills
+            boardContent: initialSkills()
         }
         try {
             let user = await User.findOne( { userId: profile.id } );
@@ -99,7 +79,7 @@ passport.use(new FacebookStrategy({
             displayName: profile.name.givenName,
             imageUrl: 'Facebook-Blacklist-Zuckerberg.jpg',
             provider: profile.provider,
-            boardContent: initialSkills
+            boardContent: initialSkills()
         }
         try {
             let user = await User.findOne( { userId: profile.id } );
@@ -127,3 +107,11 @@ passport.deserializeUser(function (id, done) {
         })
         .catch((err) => done(err))
 });
+
+
+const initialSkills = () => {
+    const skills = [];
+    skills.length = 16;
+    skills.fill({status: 'outstanding', value: ''}, 0, 16);
+    return skills;
+}

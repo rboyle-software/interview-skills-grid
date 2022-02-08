@@ -1,6 +1,6 @@
 const express = require('express');
+const currentUser = require('../controllers/passportController');
 const userController = require('../controllers/userController');
-const currentUser = require('../routes/passport');
 const cookieSession = require('cookie-session');
 const cookieParser = require('cookie-parser');
 const session = require('express-session');
