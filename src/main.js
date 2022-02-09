@@ -1,4 +1,4 @@
-window.onload = function() {
+// window.onload = function() {
 
     // select the main board div
     const board = document.querySelector('#board');
@@ -123,4 +123,4 @@ window.onload = function() {
 
     }
 
-}
+// }

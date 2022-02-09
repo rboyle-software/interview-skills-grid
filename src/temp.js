@@ -1,4 +1,4 @@
-window.onload = function() {
+// window.onload = function() {
 
     const boxesArray = document.querySelectorAll('.boxes');
 
@@ -19,4 +19,4 @@ window.onload = function() {
             box.classList.add('outstanding');
         }
     }
-}
+// }
