@@ -3,7 +3,6 @@ const GoogleStrategy = require('passport-google-oauth20').Strategy;
 const FacebookStrategy = require('passport-facebook').Strategy;
 const GitHubStrategy = require('passport-github2').Strategy;
 const { User } = require('../models/UserModel');
-const path = require('path');
 require('dotenv').config();
 
 
