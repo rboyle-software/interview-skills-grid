@@ -84,12 +84,6 @@ function submitForm(e) {
     // alert if no Box selected
     if (boxValue === '') {
       alert('Please select a box on the grid!');
-        // Swal.fire(
-        //     'Please select a box on the grid!',
-        //     '',
-        //     'question'
-        // );
-        // return;
     }
 
     // prepare update for box and interface
