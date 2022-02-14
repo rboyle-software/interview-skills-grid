@@ -98,46 +98,43 @@ app.put('/user-skills', userController.updateUserSkills, (req, res) => {
 // authorize with Google
 app.get('/auth/google',
     passport.authenticate('google', {
-        scope: ['email', 'profile']
-    }));
+    scope: ['email', 'profile']
+}));
 
 app.get('/auth/google/callback',
     passport.authenticate('google', {
-        failureRedirect: '/auth-failed'
-    }),
-    (req, res) => {
-        res.redirect('/skills-grid');
-    });
+    failureRedirect: '/auth-failed'
+}), (req, res) => {
+    res.redirect('/skills-grid');
+});
 
 
 // authorize with GitHub
 app.get('/auth/github',
     passport.authenticate('github', {
-        scope: [ 'user:email' ]
-    }));
+    scope: [ 'user:email' ]
+}));
 
 app.get('/auth/github/callback', 
-    passport.authenticate('github', {
-        failureRedirect: '/auth-failed'
-    }),
-    (req, res) => {
-        res.redirect('/skills-grid');
-    });
+passport.authenticate('github', {
+    failureRedirect: '/auth-failed'
+}), (req, res) => {
+    res.redirect('/skills-grid');
+});
 
 
 // authorize with Facebook
 app.get('/auth/facebook',
     passport.authenticate('facebook', {
-        scope: [ 'email', 'public_profile' ]
-    }));
+    scope: [ 'email', 'public_profile' ]
+}));
 
 app.get('/auth/facebook/callback',
     passport.authenticate('facebook', {
-        failureRedirect: '/auth-failed'
-    }),
-    (req, res) => {
-        res.redirect('/skills-grid');
-    });
+    failureRedirect: '/auth-failed'
+}), (req, res) => {
+    res.redirect('/skills-grid');
+});
 
 
 app.get('/logout', (req, res) => {
@@ -158,4 +155,3 @@ app.use((err, req, res, next) => {
 
 
 app.listen(PORT, () => console.log(`Listening on Port ${PORT}`));
-
