@@ -39,13 +39,15 @@ function boxSelect() {
     index = this.key;
     boxValue.innerText = 'Box#'.concat(' ', index, '\n', content);
     newTopic.value = content;
-}
 
+    // remove selected class from other boxes
+    const boxes = board.querySelectorAll('.boxes');
+    boxes.forEach((box) => {
+      if (box !== this) box.classList.remove('selected');
+    });
 
-// toggle box color
-function toggleColor() {
-    this.classList.toggle('outstanding');
-    this.classList.toggle('acquired');
+    // add selected class to selected box
+    this.classList.add('selected')
 }
 
 
@@ -108,12 +110,17 @@ function submitForm(e) {
     }
 
     // update database
-    const request = fetch('/user-skills', {
+    fetch('/user-skills', {
         method: 'PUT',
         headers: {
             'Content-Type': 'application/json'
         },
         body: JSON.stringify(updateObject)
+    });
+
+    // remove selected class from all boxes
+    boxes.forEach((box) => {
+      box.classList.remove('selected');
     });
 
 }

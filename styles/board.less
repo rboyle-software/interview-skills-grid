@@ -4,6 +4,8 @@
 @light-gray: rgb(220, 220, 220);
 @dark-gray: rgb(70, 70, 70);
 @faded-purple: rgb(114, 69, 107);
+@default-border: solid 3px black;
+@select-border: solid 3px @faded-purple;
 
 
 #application {
@@ -33,7 +35,7 @@
     display: flex;
     height: 95%;
     width: 100%;
-    border: solid 3px black;
+    border: @default-border;
     border-radius: 10px;
     box-shadow: -2px 1px 5px black;
     align-items: center;
@@ -48,6 +50,12 @@
 
     > a {
         color: black;
+    }
+
+    &.selected {
+      transition: 400ms;
+      background-color: aliceblue;
+      box-shadow: 0px 0px 20px rgba(136, 174, 209, 0.589);
     }
 }
 
