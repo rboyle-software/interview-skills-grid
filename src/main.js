@@ -10,22 +10,9 @@ const application = document.querySelector('#application');
 const submitButton = document.querySelector('#submit-button');
 
 
-
 // add click listeners to environment
 application.onclick = unSelectAll;
 submitButton.onclick = submitForm;
-
-
-// remove selected class from all boxes
-function unSelectAll(e) {
-  const event = e || window.event;
-  if (event.target === this) {
-    const boxes = board.querySelectorAll('.boxes');
-    boxes.forEach((box) => {
-      box.classList.remove('selected');
-    });
-  }
-}
 
 
 // get and display the current user's skills array
@@ -69,7 +56,16 @@ function boxSelect() {
 }
 
 
-
+// remove selected class from all boxes
+function unSelectAll(e) {
+  const event = e || window.event;
+  if (event.target === this) {
+    const boxes = board.querySelectorAll('.boxes');
+    boxes.forEach((box) => {
+      box.classList.remove('selected');
+    });
+  }
+}
 
 
 // populate the board with values from the user's boardContent array
