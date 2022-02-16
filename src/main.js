@@ -4,9 +4,14 @@ const board = document.querySelector('#board');
 const boxValue = document.querySelector('#box-value');
 // select the user input form
 const userInput = document.querySelector('#user-input');
+// select the app background
+const application = document.querySelector('#application');
 // select the submit button
 const submitButton = document.querySelector('#submit-button');
-// add click listener to submit button
+
+
+// add click listeners to environment
+application.onclick = unSelectAll;
 submitButton.onclick = submitForm;
 
 
@@ -51,6 +56,18 @@ function boxSelect() {
 }
 
 
+// remove selected class from all boxes
+function unSelectAll(e) {
+  const event = e || window.event;
+  if (event.target === this) {
+    const boxes = board.querySelectorAll('.boxes');
+    boxes.forEach((box) => {
+      box.classList.remove('selected');
+    });
+  }
+}
+
+
 // populate the board with values from the user's boardContent array
 function populateBoard(arrayOfSkills) {
 
@@ -86,6 +103,7 @@ function submitForm(e) {
     // alert if no Box selected
     if (boxValue === '') {
       alert('Please select a box on the grid!');
+      return;
     }
 
     // prepare update for box and interface
@@ -116,11 +134,6 @@ function submitForm(e) {
             'Content-Type': 'application/json'
         },
         body: JSON.stringify(updateObject)
-    });
-
-    // remove selected class from all boxes
-    boxes.forEach((box) => {
-      box.classList.remove('selected');
     });
 
 }
