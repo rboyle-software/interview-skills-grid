@@ -136,4 +136,11 @@ function submitForm(e) {
         body: JSON.stringify(updateObject)
     });
 
+    boxes.forEach((box) => {
+        box.classList.remove('selected');
+    });
+
+    document.querySelector('#box-value').innerText = '';
+    document.querySelector('#text-input').value = '';
+
 }
