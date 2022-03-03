@@ -136,10 +136,12 @@ function submitForm(e) {
         body: JSON.stringify(updateObject)
     });
 
+    // un-select the selected box
     boxes.forEach((box) => {
         box.classList.remove('selected');
     });
 
+    // clear text from UI
     document.querySelector('#box-value').innerText = '';
     document.querySelector('#text-input').value = '';
 
